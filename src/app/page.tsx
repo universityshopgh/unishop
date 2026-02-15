@@ -18,6 +18,12 @@ import { useCart } from "@/context/CartContext";
 
 const FALLBACK_CAROUSEL_SLIDES = [
   {
+    title: "University Shop",
+    subtitle: "Ghana's Premium Campus Hub",
+    image: "/images/Costero carousel.jpeg",
+    accent: "bg-slate-900"
+  },
+  {
     title: "Eco-Friendly Tech",
     subtitle: "Sustainable Gadgets for a Greener Ghana",
     image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=2070&auto=format&fit=crop",
