@@ -234,7 +234,7 @@ export default function Home() {
                 />
 
                 {/* Selective Dark Overlay for Banners */}
-                {(slide as any).objectFit === 'cover' && (
+                {(slide as any).objectFit === 'cover' && !(slide as any).noBlur && (
                   <div className="absolute inset-0 bg-black/30 z-0" />
                 )}
 
