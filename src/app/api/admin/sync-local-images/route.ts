@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase-admin';
+// Force build: 2026-02-15 17:21
 import fs from 'fs';
 import path from 'path';
 import { BULK_PRODUCTS } from '@/lib/bulk_products';
@@ -78,6 +79,7 @@ export async function POST(req: Request) {
                 name: bulkMatch?.name || file.replace(/\.[^/.]+$/, "").replace(/[-_]/g, ' '),
                 description: bulkMatch?.description || `Authentic ${file.replace(/\.[^/.]+$/, "")} from the University Hub.`,
                 price: bulkMatch?.price || 0,
+                // @ts-ignore - dynamic metadata
                 originalPrice: (bulkMatch as any)?.originalPrice || null,
                 category: bulkMatch?.category || "General",
                 brand: bulkMatch?.brand || "Flyer",
