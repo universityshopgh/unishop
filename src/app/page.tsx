@@ -21,7 +21,8 @@ const FALLBACK_CAROUSEL_SLIDES = [
     title: "University Shop",
     subtitle: "Ghana's Premium Campus Hub",
     image: "/images/Costero carousel.jpeg",
-    accent: "bg-slate-900"
+    accent: "bg-slate-900",
+    noBlur: true
   },
   {
     title: "Eco-Friendly Tech",
