@@ -1,0 +1,89 @@
+{
+    "brand": {
+        "name": "University",
+        "suffix": "Shop",
+        "tagline": "\"Affordability at its best!\"",
+        "description": "The premium campus destination for quality lifestyle and tech essentials.",
+        "email": "universityshop845@gmail.com"
+    },
+    "navigation": {
+        "explore": [
+            {
+                "label": "All Products",
+                "href": "/shop"
+            },
+            {
+                "label": "Electronics",
+                "href": "/shop?category=Electronics"
+            },
+            {
+                "label": "Phones & Tablets",
+                "href": "/shop?category=Phones %26 Tablets"
+            },
+            {
+                "label": "Laptops & Computers",
+                "href": "/shop?category=Laptops %26 Computers"
+            }
+        ],
+        "support": [
+            {
+                "label": "Contact Us",
+                "href": "/contact"
+            },
+            {
+                "label": "Track Package",
+                "href": "/track"
+            },
+            {
+                "label": "Terms of Service",
+                "href": "/terms"
+            },
+            {
+                "label": "Privacy Policy",
+                "href": "/privacy"
+            }
+        ],
+        "main": [
+            {
+                "label": "Home",
+                "href": "/"
+            },
+            {
+                "label": "Shop",
+                "href": "/shop"
+            },
+            {
+                "label": "Track Order",
+                "href": "/track"
+            },
+            {
+                "label": "About",
+                "href": "/about"
+            }
+        ]
+    },
+    "socials": [
+        {
+            "icon": "Facebook",
+            "href": "https://web.facebook.com/profile.php?id=61587937483330",
+            "color": "hover:bg-blue-600"
+        },
+        {
+            "icon": "Instagram",
+            "href": "https://www.instagram.com/universityshopgh/",
+            "color": "hover:bg-pink-600"
+        },
+        {
+            "icon": "Tiktok",
+            "href": "https://www.tiktok.com/@universityshopgh?lang=en-GB",
+            "color": "hover:bg-zinc-950"
+        }
+    ],
+    "contact": {
+        "whatsapp": "https://chat.whatsapp.com/FYAY0Z8z5POFwdG6OYCtse?mode=gi_c"
+    },
+    "siteMeta": {
+        "protocol": "GS-V3 ACTIVE",
+        "copyrightName": "UNIVERSITY SHOP"
+    }
+}

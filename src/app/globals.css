@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+
+  /* Precise Flyer Colors */
+  --color-flyer-red: #c41e3a;
+  /* From "Our Products" red banner */
+  --color-flyer-green: #90a986;
+  /* From "University" mint text */
+  --color-flyer-navy: #1e293b;
+  /* From deep sections/pattern */
+  --color-flyer-blue: #3b82f6;
+  /* Light blue accent */
+  --color-flyer-light: #f8fafc;
+  /* Soft background from flyer bottom */
+
+  --color-primary: var(--color-flyer-red);
+  --color-secondary: var(--color-flyer-green);
+  --color-accent: var(--color-flyer-navy);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-mesh: mesh 20s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-shimmer: shimmer 2s infinite;
+
+  /* Machine-Adaptive Layout Constants */
+  --navbar-height: 80px;
+  --promo-height: 40px;
+  --total-header-height: calc(var(--navbar-height) + var(--promo-height));
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes mesh {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-flyer-light text-slate-900 antialiased font-sans transition-colors duration-500;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-xl border border-slate-200 shadow-xl;
+  }
+
+  .glass-card {
+    @apply bg-white border border-slate-100 hover:border-flyer-red/20 hover:shadow-2xl hover:shadow-flyer-red/5 transition-all duration-500;
+  }
+
+  .flyer-banner {
+    @apply bg-flyer-red rounded-full px-6 py-2 text-white font-black uppercase tracking-tighter shadow-lg shadow-flyer-red/30;
+  }
+
+  .mesh-gradient {
+    position: relative;
+    background-color: #ffffff;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(196, 30, 58, 0.05) 0, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(144, 169, 134, 0.1) 0, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(30, 41, 59, 0.05) 0, transparent 50%);
+  }
+}
+
+.text-glow-red {
+  text-shadow: 0 0 20px rgba(196, 30, 58, 0.2);
+}

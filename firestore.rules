@@ -1,0 +1,73 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    // IMPORTANT: This is the authorized admin UID from .env.local
+    function isAuthorizedAdmin() {
+      return isSignedIn() && 
+        request.auth.uid == '2tLSsAsDS3Qv1dcSHxYGiuMZ2gE3';
+    }
+    
+    function isAdmin() {
+      return isAuthorizedAdmin() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Products: Anyone can read, only authorized admin can write
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Categories: Anyone can read, only authorized admin can write
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Users: Users can read/write their own info, BUT CANNOT CHANGE THEIR ROLE
+    // Only authorized admin can change roles or delete users
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isSignedIn() && request.resource.data.role == 'customer';
+      allow update: if (isOwner(userId) && (!request.resource.data.diff(resource.data).affectedKeys().has('role'))) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Usernames: Used for uniqueness checks and login via username
+    match /usernames/{username} {
+      allow read: if true;
+      allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+      allow update: if false;
+      allow delete: if isSignedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+    }
+
+    // Orders: Users can read/write their own orders, authorized admin can manage all
+    match /orders/{orderId} {
+      allow read: if isSignedIn() && (request.auth.uid == resource.data.userId || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Coupons: Authorized admin only
+    match /coupons/{couponId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // Subscribers: Anyone can create, only authorized admin can read
+    match /subscribers/{subscriberId} {
+      allow create: if true;
+      allow read, write: if isAdmin();
+    }
+  }
+}
