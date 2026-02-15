@@ -1,7 +1,10 @@
 import { Resend } from 'resend';
 
 
-export const resend = new Resend(process.env.RESEND_API_KEY);
+// Provide a placeholder for the build phase to prevent crashes.
+// Actual key must be set in Vercel Environment Variables.
+const apiKey = process.env.RESEND_API_KEY || 're_build_placeholder_123';
+export const resend = new Resend(apiKey);
 
 export const sendOrderConfirmationEmail = async (
   email: string,
