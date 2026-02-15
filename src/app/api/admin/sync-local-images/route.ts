@@ -78,7 +78,7 @@ export async function POST(req: Request) {
                 name: bulkMatch?.name || file.replace(/\.[^/.]+$/, "").replace(/[-_]/g, ' '),
                 description: bulkMatch?.description || `Authentic ${file.replace(/\.[^/.]+$/, "")} from the University Hub.`,
                 price: bulkMatch?.price || 0,
-                originalPrice: bulkMatch?.originalPrice || null,
+                originalPrice: (bulkMatch as any)?.originalPrice || null,
                 category: bulkMatch?.category || "General",
                 brand: bulkMatch?.brand || "Flyer",
                 stock: bulkMatch?.stock || 10,
